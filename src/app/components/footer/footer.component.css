@@ -9,7 +9,6 @@ footer {
 }
 
 footer .links {
-    border: solid 1px white;
     width: 220px;
     height: 70%;
     margin-left: 60px;
@@ -29,4 +28,6 @@ footer .contacts {
 
 footer div p {
     color: #fff;
+    font-size: 0.9em;
+    line-height: 1em;
 }

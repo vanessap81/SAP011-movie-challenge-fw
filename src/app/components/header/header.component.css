@@ -27,6 +27,24 @@ input {
     width: 180px;
     height: 28px;
     border-radius: 12px;
-    background-color: #fff;
-    opacity: 0.4;
+    padding-left: 12px;
+    background-color: gray;
+    box-shadow: none;
+    border: none;
 }
+
+input::placeholder {
+    color: #fff;
+    opacity: 1;
+}
+
+.input {
+    width: 180px;
+    height: 28px;
+    border-radius: 12px;
+    padding-left: 12px;
+    background-color: gray;
+    color: #fff;
+}
+
+
