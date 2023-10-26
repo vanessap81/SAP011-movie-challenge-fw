@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'movies',
+    path: 'details',
     loadChildren: () => import('./components/movies/movies.module').then(m => m.MoviesModule)
   }
 ];
