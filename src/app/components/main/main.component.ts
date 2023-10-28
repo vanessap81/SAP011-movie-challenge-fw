@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiscoverMovieService } from 'src/app/services/discover-movie.service';
+import { Movie } from 'src/app/Movie';
 
 @Component({
   selector: 'app-main',
@@ -8,15 +9,13 @@ import { DiscoverMovieService } from 'src/app/services/discover-movie.service';
 })
 
 export class MainComponent implements OnInit {
-  movies = [
-    {name: "Interstelar", year: 2010},
-    {name: "Inception", year: 2018},
-    {name: "Baby's Drive", year: 2017},
-  ];
 
-  movieExample = [];
+  movie: Movie[] = [];
+  
 
-  constructor(private discoverMovieService: DiscoverMovieService) {}
+  constructor(private discoverMovieService: DiscoverMovieService) {
+    this.getInterstelar();
+  }
 
   ngOnInit(): void {
     this.printMovies();
@@ -27,6 +26,10 @@ export class MainComponent implements OnInit {
       console.log('OnInit do main Component');
       console.log(data);
     });
+  }
+
+  getInterstelar(): void {
+    this.discoverMovieService.getInterstelar().subscribe((item)=> {this.movie.push(item)});
   }
 
   // Exemplo de event em botão

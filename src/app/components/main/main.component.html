@@ -2,14 +2,14 @@
     <div class="movies-container">
         <h2>Renderizando Lista de Filmes</h2>
         <ul class="movie-lines-container">
-            <li *ngFor="let movie of movies" class="movie">
-                Nome: {{ movie.name }} - Year: {{ movie.year }}
+            <li class="movie">
+                <p>Filme de teste: {{ movie[0].original_title }}</p>
+                <p>Ano de lançamento: {{ movie[0].release_date }}</p>
+                <p>Imagem: {{ movie[0].poster_path }}</p>
             </li>
         </ul>
 
-        <h2>Printando exemplo a partir da requisição Http na tela</h2>
-        <div class="movie"> imagem aqui </div>
-        <p>detalhes do filme</p>
+        <a routerLink="/details">Clique para a página 2</a>
 
         <button (click)="showMessage()">Clique para mostrar</button>
         <p *ngIf="show" class="p-teste">Exibindo mensagem!</p>
