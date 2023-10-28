@@ -20,7 +20,7 @@ footer img {
 }
 
 footer .contacts {
-    border: solid 1px white;
+    /* border: solid 1px white; */
     width: 220px;
     height: 70%;
     margin-right: 60px;

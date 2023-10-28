@@ -37,7 +37,7 @@ main {
 }
 
 .movie-lines-container {
-    border: dotted 1px red;
+    /* border: dotted 1px red; */
     width: 95%;
     display: grid;
     justify-items: center;
@@ -50,7 +50,15 @@ main {
 .movie {
     border: solid 1px #000;
     width: 140px;
-    height: 200px;
+    min-height: 200px;
     list-style: none;
     margin: 15px;
+}
+
+button {
+    margin-top: 50px;
+}
+
+.p-teste {
+    margin-bottom: 50px;
 }
