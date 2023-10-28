@@ -10,11 +10,11 @@ import { Movie } from 'src/app/Movie';
 
 export class MainComponent implements OnInit {
 
-  movie: Movie[] = [];
-  
+  movies: Movie[] = [];
+  page = '';
 
   constructor(private discoverMovieService: DiscoverMovieService) {
-    this.getInterstelar();
+    this.printMovies();
   }
 
   ngOnInit(): void {
@@ -22,19 +22,16 @@ export class MainComponent implements OnInit {
   }
 
   printMovies() {
-    this.discoverMovieService.getMoviesExample(1).subscribe((data)=> {
-      console.log('OnInit do main Component');
+    this.discoverMovieService.discoverMovies().subscribe((data)=> {
+      this.movies = data.results;
+      this.page = data.page;
       console.log(data);
     });
   }
 
-  getInterstelar(): void {
-    this.discoverMovieService.getInterstelar().subscribe((item)=> {this.movie.push(item)});
-  }
-
-  // Exemplo de event em botão
-  show: boolean = false;
-  showMessage(): void {
-    this.show = !this.show; // toggle
-  }
+  // Exemplo de event em botão  // toggle
+  // show: boolean = false;
+  // showMessage(): void {
+  //   this.show = !this.show; 
+  // }
 }

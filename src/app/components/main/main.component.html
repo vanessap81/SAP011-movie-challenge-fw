@@ -1,17 +1,18 @@
 <main>
     <div class="movies-container">
-        <h2>Renderizando Lista de Filmes</h2>
         <ul class="movie-lines-container">
-            <li class="movie">
-                <p>Filme de teste: {{ movie[0].original_title }}</p>
-                <p>Ano de lançamento: {{ movie[0].release_date }}</p>
-                <p>Imagem: {{ movie[0].poster_path }}</p>
+            <li *ngFor="let movie of movies" class="movie">
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="poster-movie">
+                <p>Title: {{ movie.original_title }}</p>
+                <p>Release: {{ movie.release_date }}</p>
             </li>
         </ul>
 
-        <a routerLink="/details">Clique para a página 2</a>
+        <p class="page">Página {{ page }}</p>
 
-        <button (click)="showMessage()">Clique para mostrar</button>
-        <p *ngIf="show" class="p-teste">Exibindo mensagem!</p>
+        <!-- <a routerLink="/details">Clique para a página 2</a> -->
+
+        <!-- <button (click)="showMessage()">Clique para mostrar</button>
+        <p *ngIf="show" class="p-teste">Exibindo mensagem!</p> -->
     </div>
 </main>
