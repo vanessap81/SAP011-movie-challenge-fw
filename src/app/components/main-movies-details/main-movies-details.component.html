@@ -1,3 +1,8 @@
 <main>
-    <div class="movies-container"></div>
+    <a routerLink="/home">Voltar para a Home</a>
+    <div class="movies-container">
+        <div *ngIf="movie" class="details">
+            <h1>ID: {{ movie.id }}</h1>
+        </div>
+    </div>
 </main>

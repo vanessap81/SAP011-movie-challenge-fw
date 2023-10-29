@@ -3,7 +3,7 @@
         <ul class="movie-lines-container">
             <li *ngFor="let movie of movies" class="movie">
                 <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="poster-movie">
-                <p>Title: {{ movie.original_title }}</p>
+                <p>Title: <a routerLink="/details/{{ movie.id }}">{{ movie.original_title }}</a></p>
                 <p>Release: {{ movie.release_date }}</p>
             </li>
         </ul>

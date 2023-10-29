@@ -66,12 +66,18 @@ main {
     font-size: 0.8em;
     text-align: center;
     color: #fff;
+    background-color: #000;
     font-family: 'Poppins', sans-serif;
+}
+
+.movie a {
+    text-decoration: none;
+    font-size: 0.9em;
+    color: #fff;
 }
 
 .poster-movie {
     width: 9rem;
-    /* height: 12rem; */
     object-fit: cover;
 }
 

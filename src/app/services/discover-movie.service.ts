@@ -15,4 +15,8 @@ export class DiscoverMovieService {
   discoverMovies(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
+  getItem(id: number): Observable<Movie> {
+    return this.http.get<Movie>(`${this.apiUrl}/${id}`)
+  }
 }
