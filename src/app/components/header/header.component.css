@@ -24,9 +24,9 @@ nav {
 }
 
 input {
-    width: 180px;
+    width: 160px;
     height: 28px;
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px;
     padding-left: 12px;
     background-color: gray;
     box-shadow: none;
@@ -45,6 +45,12 @@ input::placeholder {
     padding-left: 12px;
     background-color: gray;
     color: #fff;
+}
+
+button {
+    width: 30px;
+    height: 30px;
+    border-radius: 0 12px 12px 0;
 }
 
 

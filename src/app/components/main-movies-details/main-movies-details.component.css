@@ -9,18 +9,17 @@ main {
 }
 
 .movies-container {
-    width: 70%;
+    width: 80%;
     height: 70%;
     border-radius: 20px;
-    background-color: #344d67;
 }
 
-a {
+.back {
     text-decoration: none;
     color: #fff;
+    font-size: 1.1em;
     align-self: flex-start;
-    margin-left: 240px;
-    margin-bottom: 40px;
+    margin-left: 180px;
 }
 
 .details {
@@ -30,20 +29,34 @@ a {
     align-items: center;
 }
 
-h1 {
-    color: #fff;
-}
-
 .poster-movie {
     height: 23rem;
     object-fit: cover;
-    margin: 45px;
+    margin: 0 50px;
 }
 
 .text-details {
     width: 60%;
-    color: #fff;
-    font-size: 1.1em;
+    min-height: 70%;
+    font-size: 0.9em;
     display: flex;
     flex-direction: column;
+    padding: 32px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #344d67;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.text-details h3 {
+    color: yellow;
+}
+
+.text-details p {
+    margin-top: 20px;
 }

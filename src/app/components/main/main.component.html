@@ -3,16 +3,18 @@
         <ul class="movie-lines-container">
             <li *ngFor="let movie of movies" class="movie">
                 <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="poster-movie">
-                <p>Title: <a routerLink="/details/{{ movie.id }}">{{ movie.original_title }}</a></p>
-                <p>Release: {{ movie.release_date }}</p>
+                <p class="movie-info"><a routerLink="/details/{{ movie.id }}">{{ movie.original_title | uppercase }}</a></p>
+                <p>Year: {{ movie.release_date.slice(0, 4) }}</p>
             </li>
         </ul>
-
-        <p class="page">Página {{ page }}</p>
 
         <!-- <a routerLink="/details">Clique para a página 2</a> -->
 
         <!-- <button (click)="showMessage()">Clique para mostrar</button>
         <p *ngIf="show" class="p-teste">Exibindo mensagem!</p> -->
     </div>
+    <div class="page-control">
+        <p class="page">Page {{ page }}</p>
+    </div>
+    
 </main>

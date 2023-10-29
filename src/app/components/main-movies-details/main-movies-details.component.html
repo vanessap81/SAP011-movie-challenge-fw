@@ -1,11 +1,16 @@
 <main>
-    <a routerLink="/home">Voltar para a Home</a>
+    <a routerLink="/home" class="back"><i class="bi bi-arrow-left-circle-fill"></i> Back to Home</a>
     <div class="movies-container">
         <div *ngIf="movie" class="details">
             <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="poster-movie">´
             <div class="text-details">
-                <h1>{{ movie.original_title }}</h1>
-                <p>{{ movie.overview }}</p>
+                <div class="title-container">
+                    <h2>{{ movie.original_title }}</h2>
+                    <h3>Note: {{ movie.vote_average }} (Total: {{ movie.vote_count }})</h3>
+                </div>
+                <h4>Year: {{ movie.release_date.slice(0, 4) }}</h4>
+                <h4>Genres: {{ movie.genres[0].name }}, {{ movie.genres[1].name }} </h4>
+                <p>Overview: <br> {{ movie.overview }}</p>
             </div>
         </div>
     </div>

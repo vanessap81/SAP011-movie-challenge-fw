@@ -12,6 +12,7 @@ export class MainComponent implements OnInit {
 
   movies: Movie[] = [];
   page = '';
+  
 
   constructor(private discoverMovieService: DiscoverMovieService) {
     this.printMovies();
