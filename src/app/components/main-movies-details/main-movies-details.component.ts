@@ -17,10 +17,15 @@ export class MainMoviesDetailsComponent {
     this.getDetails()
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getDetails();
+  }
 
   getDetails() {
     const id = Number(this.route.snapshot.paramMap.get("id"));
-    this.discoverMovie.getItem(id).subscribe((data) => (this.movie = data))
+    this.discoverMovie.getItem(id).subscribe((data) => {
+      this.movie = data;
+      console.log(data);
+    })
   }
 }

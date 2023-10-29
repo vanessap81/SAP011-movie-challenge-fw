@@ -2,7 +2,11 @@
     <a routerLink="/home">Voltar para a Home</a>
     <div class="movies-container">
         <div *ngIf="movie" class="details">
-            <h1>ID: {{ movie.id }}</h1>
+            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="poster-movie">´
+            <div class="text-details">
+                <h1>{{ movie.original_title }}</h1>
+                <p>{{ movie.overview }}</p>
+            </div>
         </div>
     </div>
 </main>

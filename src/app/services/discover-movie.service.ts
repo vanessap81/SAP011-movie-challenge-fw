@@ -8,7 +8,10 @@ import { Movie } from '../Movie';
   providedIn: 'root'
 })
 export class DiscoverMovieService {
+  key = 'api_key=64dd27c3ef4829715d2dd146a73e5d9e';
+
   private apiUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=64dd27c3ef4829715d2dd146a73e5d9e';
+  private apiUrl2 = 'https://api.themoviedb.org/3/movie';
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +20,6 @@ export class DiscoverMovieService {
   }
 
   getItem(id: number): Observable<Movie> {
-    return this.http.get<Movie>(`${this.apiUrl}/${id}`)
+    return this.http.get<Movie>(`${this.apiUrl2}/${id}?${this.key}`);
   }
 }
