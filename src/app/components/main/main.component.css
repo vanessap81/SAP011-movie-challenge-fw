@@ -21,16 +21,26 @@ main {
 }
 
 .page-control {
+    width: 400px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 40px 0;
 }
 
-.page {
+.previous,
+.page,
+.next {
     font-size: 1em;
     text-align: center;
-    padding: 5px;
     color: #fff;
-    background-color: #000;
     font-family: 'Poppins', sans-serif;
+}
+
+.page-control button {
+    width: 72px;
+    padding: 4px;
 }
 
 .movies-container::-webkit-scrollbar-track{
@@ -70,25 +80,21 @@ main {
 .movie p {
     font-size: 0.8em;
     text-align: center;
-    color: #fff;
-    background-color: #000;
+    color: #000;
     font-family: 'Poppins', sans-serif;
 }
 
 .movie a {
     text-decoration: none;
-    font-size: 0.9em;
-    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 0.7em;
+    color: #000;
 }
 
 .poster-movie {
     width: 9rem;
     object-fit: cover;
-}
-
-button,
-a {
-    margin-top: 50px;
 }
 
 .p-teste {

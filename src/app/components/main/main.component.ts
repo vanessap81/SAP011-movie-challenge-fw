@@ -11,28 +11,37 @@ import { Movie } from 'src/app/Movie';
 export class MainComponent implements OnInit {
 
   movies: Movie[] = [];
-  page = '';
+  curentlyPage = '';
   
 
-  constructor(private discoverMovieService: DiscoverMovieService) {
-    this.printMovies();
-  }
+  constructor(private discoverMovieService: DiscoverMovieService) {}
 
   ngOnInit(): void {
-    this.printMovies();
+    this.printMovies(1);
   }
 
-  printMovies() {
-    this.discoverMovieService.discoverMovies().subscribe((data)=> {
+  printMovies(page: number) {
+    this.discoverMovieService.discoverMovies(page).subscribe((data)=> {
       this.movies = data.results;
-      this.page = data.page;
+      this.curentlyPage = data.page;
       console.log(data);
     });
   }
 
-  // Exemplo de event em botão  // toggle
-  // show: boolean = false;
-  // showMessage(): void {
-  //   this.show = !this.show; 
-  // }
+  previousPage() {
+    let minusOne = Number(this.curentlyPage);
+    if (minusOne === 1) {
+      this.printMovies(1)
+    } 
+    minusOne--;
+    this.printMovies(minusOne);
+  }
+
+  nextPage(): void {
+    let plusOne = Number(this.curentlyPage);
+    plusOne++;
+    this.printMovies(plusOne);
+  }
+
+  
 }

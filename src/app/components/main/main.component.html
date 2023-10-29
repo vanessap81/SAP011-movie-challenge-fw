@@ -14,7 +14,15 @@
         <p *ngIf="show" class="p-teste">Exibindo mensagem!</p> -->
     </div>
     <div class="page-control">
-        <p class="page">Page {{ page }}</p>
+        <div class="previous-container">
+            <button (click)="printMovies(1)">First</button>
+            <button (click)="previousPage()">Previous</button>
+        </div>
+        <p class="page">Page {{ curentlyPage }}</p>
+        <div class="next-container">
+            <button (click)="nextPage()">Next</button>
+        </div>
+        
     </div>
     
 </main>
