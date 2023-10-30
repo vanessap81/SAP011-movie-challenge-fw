@@ -13,7 +13,8 @@ export class DiscoverMovieService {
   private apiUrl = 'https://api.themoviedb.org/3/discover/movie?page';
   private apiUrl2 = 'https://api.themoviedb.org/3/movie';
   private apiUrl3 = 'https://api.themoviedb.org/3/search/movie?query';
-  // private apiUrl4 = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1';
+  private apiUrl4 = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&with_genres';
+  private apiUrl5 = 'https://api.themoviedb.org/3/genre/movie/list?language=en'
 
   constructor(private http: HttpClient) {}
 
@@ -29,13 +30,19 @@ export class DiscoverMovieService {
     return this.http.get(`${this.apiUrl3}=${value}&${this.key}`);
   }
 
-  // pickGenre(genres: string): Observable<any> {
-  //   return this.http.get(`${this.apiUrl3}&with_genres=${genres}&${this.key}`);
-  // }
+  pickGenre(genres: string): Observable<any> {
+    return this.http.get(`${this.apiUrl4}=${genres}&${this.key}`);
+  }
+
+  genreList(): Observable<any> {
+    return this.http.get(`${this.apiUrl5}&${this.key}`);
+  }
 }
 
 
 // mudando a página 
-// 'https://api.themoviedb.org/3/discover/movie?page= 3& api_key=64dd27c3ef4829715d2dd146a73e5d9e';
 
-// 'https://api.themoviedb.org/3/search/movie?query= Barbie &include_adult=false&language=en-US&page=1'
+// 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&with_genres=', options)
+
+// lista de gêneros
+// 'https://api.themoviedb.org/3/genre/movie/list?language=en'

@@ -26,6 +26,10 @@ form {
     color: #fff;
 }
 
+form .genre_option {
+    color: #fff;
+}
+
 form .search {
     width: 160px;
     height: 28px;

@@ -7,15 +7,14 @@
                 <option>Option 2</option>
                 <option>Option 3</option>
             </select>
-    
-            <select class="input">
-                <option default>Genre</option>
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-            </select>
         </nav>
+
         <form>
+            <select class="input select-option" (change)="pickGenre($event)">
+                <option default>Genre</option>
+                <option class="genre_option" *ngFor="let genre of listOfGenres">{{ genre.name }}</option>
+            </select>
+
             <i class="bi bi-search"></i><input class="search" type="text" placeholder="Search" (input)="search($event)">
         </form>
     </div>

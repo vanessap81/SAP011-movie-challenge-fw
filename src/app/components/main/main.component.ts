@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DiscoverMovieService } from 'src/app/services/discover-movie.service';
 import { Movie } from 'src/app/Movie';
+import { Genre } from 'src/app/Genre';
 
 @Component({
   selector: 'app-main',
@@ -12,6 +13,8 @@ export class MainComponent implements OnInit {
 
   movies: Movie[] = [];
   allMovies: Movie[] = [];
+  listOfGenres: Genre[] = [];
+  moviesPerGenre: Movie[] = [];
   curentlyPage = '';
   
 
@@ -20,6 +23,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.printMovies(1);
+    this.createGenreList();
   }
 
   printMovies(page: number) {
@@ -45,17 +49,34 @@ export class MainComponent implements OnInit {
   }
 
   search(e: Event) {
-
     const target = e.target as HTMLInputElement;
     const value = target.value;
 
     this.discoverMovieService.searchMovie(value).subscribe((data)=> {
       this.allMovies = data.results;
-      console.log(this.allMovies);
     });
 
     this.movies = this.allMovies.filter((movie) => {
       return movie.original_title.toLowerCase().includes(value);
     })
+  }
+
+  createGenreList(): void {
+    this.discoverMovieService.genreList().subscribe((data)=> {
+      this.listOfGenres = data.genres;
+      console.log(this.listOfGenres);
+    });
+  }
+
+  pickGenre(e: Event): void {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    this.discoverMovieService.pickGenre(value).subscribe((data)=> {
+      this.moviesPerGenre = data.results;
+      console.log(this.moviesPerGenre);
+    });
+
+
   }
 }
