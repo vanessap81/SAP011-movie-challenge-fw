@@ -9,7 +9,9 @@
                     <h3>Note: {{ movie.vote_average }} (Total: {{ movie.vote_count }})</h3>
                 </div>
                 <h4>Year: {{ movie.release_date.slice(0, 4) }}</h4>
-                <h4>Genres: {{ movie.genres[0].name }}, {{ movie.genres[1].name }} </h4>
+                    <div class="genres-div">
+                        <h4>Genres: </h4><h4 *ngFor="let genre of genres"> {{ genre.name }} </h4>
+                    </div>
                 <p>Overview: <br> {{ movie.overview }}</p>
             </div>
         </div>

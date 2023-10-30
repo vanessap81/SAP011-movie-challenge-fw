@@ -10,6 +10,7 @@ export interface Movie {
 }
 
 interface GenreMovie {
+    id: number,
     name: string
 }
 

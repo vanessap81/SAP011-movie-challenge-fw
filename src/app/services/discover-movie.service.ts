@@ -23,8 +23,8 @@ export class DiscoverMovieService {
     return this.http.get(`${this.apiUrl}=${page}&${this.key}`);
   }
 
-  getItem(id: number): Observable<Movie> {
-    return this.http.get<Movie>(`${this.apiUrl2}/${id}?${this.key}`);
+  getItem(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl2}/${id}?${this.key}`);
   }
 
   searchMovie(value: string): Observable<any> {

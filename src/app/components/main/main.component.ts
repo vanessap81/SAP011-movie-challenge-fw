@@ -33,6 +33,7 @@ export class MainComponent implements OnInit {
     });
   }
 
+  // Paginação só funciona no discover 
   previousPage() {
     let minusOne = Number(this.curentlyPage);
     if (minusOne === 1) {
@@ -48,6 +49,7 @@ export class MainComponent implements OnInit {
     this.printMovies(plusOne);
   }
 
+  // Se inserir o .toLowerCase depois de original_title não funciona com letras maiúsculas
   search(e: Event) {
     const target = e.target as HTMLInputElement;
     const value = target.value;
@@ -57,7 +59,7 @@ export class MainComponent implements OnInit {
     });
 
     this.movies = this.allMovies.filter((movie) => {
-      return movie.original_title.toLowerCase().includes(value);
+      return movie.original_title.includes(value);
     })
   }
 
@@ -77,5 +79,9 @@ export class MainComponent implements OnInit {
       console.log(data);
     });
 
+  }
+
+  reloadPage(){
+    window.location.reload()
   }
 }

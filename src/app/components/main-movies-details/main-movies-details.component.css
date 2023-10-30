@@ -53,6 +53,15 @@ main {
     margin-bottom: 20px;
 }
 
+.genres-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.genres-div h4 {
+    margin-right: 6px;
+}
+
 .text-details h3 {
     color: yellow;
 }
