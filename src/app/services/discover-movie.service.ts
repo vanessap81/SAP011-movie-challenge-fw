@@ -15,7 +15,8 @@ export class DiscoverMovieService {
   private apiUrl2 = 'https://api.themoviedb.org/3/movie';
   private apiUrl3 = 'https://api.themoviedb.org/3/search/movie?query';
   private apiUrl4 = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&with_genres';
-  private apiUrl5 = 'https://api.themoviedb.org/3/genre/movie/list?language=en'
+  private apiUrl5 = 'https://api.themoviedb.org/3/genre/movie/list?language=en';
+  private apiUrl6 = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by';
 
   constructor(private http: HttpClient) {}
 
@@ -38,12 +39,12 @@ export class DiscoverMovieService {
   genreList(): Observable<any> {
     return this.http.get(`${this.apiUrl5}&${this.key}`);
   }
+
+  getSortBy(sortBy: string): Observable<any> {
+    return this.http.get(`${this.apiUrl6}=${sortBy}&${this.key}`);
+  }
 }
 
 
-// mudando a página 
-
-// 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&with_genres=', options)
-
-// lista de gêneros
-// 'https://api.themoviedb.org/3/genre/movie/list?language=en'
+// 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=
+// vote_average.desc'

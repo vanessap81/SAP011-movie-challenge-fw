@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   movies: Movie[] = [];
   allMovies: Movie[] = [];
   listOfGenres: Genre[] = [];
+  orderByValues = ['vote_count.desc', 'popularity.desc'];
   curentlyPage = '';
   
 
@@ -76,7 +77,17 @@ export class MainComponent implements OnInit {
 
     this.discoverMovieService.pickGenre(value).subscribe((data)=> {
       this.movies = data.results;
-      console.log(data);
+      // console.log(data);
+    });
+  }
+
+  sortBy(e: Event) {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    this.discoverMovieService.getSortBy(value).subscribe((data)=> {
+      this.movies = data.results;
+      // console.log(data);
     });
 
   }

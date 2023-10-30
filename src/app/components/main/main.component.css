@@ -16,17 +16,7 @@ main {
     /* justify-content: start; */
 }
 
-nav {
-    /* border: solid 1px red; */
-    display: flex;
-    /* justify-content: start; */
-}
-
 form {
-    color: #fff;
-}
-
-form .genre_option {
     color: #fff;
 }
 

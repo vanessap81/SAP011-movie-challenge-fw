@@ -1,15 +1,12 @@
 <main>
     <div class="form-container">
-        <nav>
-            <select class="input">
-                <option default>Order by</option>
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-            </select>
-        </nav>
-
         <form>
+            <select class="input" (change)="sortBy($event)">
+                <option default>Order by</option>
+                <option [value]="orderByValues[0]">Most voted</option>
+                <option [value]="orderByValues[1]">Highest popularity</option>
+            </select>
+
             <select class="input select-option" (change)="pickGenre($event)">
                 <option default>Genre</option>
                 <option class="genre_option" *ngFor="let genre of listOfGenres" [value]="genre.id">{{ genre.name }}</option>
