@@ -32,3 +32,5 @@ export class DiscoverMovieService {
 
 // mudando a página 
 // 'https://api.themoviedb.org/3/discover/movie?page= 3& api_key=64dd27c3ef4829715d2dd146a73e5d9e';
+
+// 'https://api.themoviedb.org/3/search/movie?query= Barbie &include_adult=false&language=en-US&page=1'
