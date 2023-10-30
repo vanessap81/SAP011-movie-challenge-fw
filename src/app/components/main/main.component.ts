@@ -20,7 +20,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.printMovies(1);
-    this.printAllMovies()
   }
 
   printMovies(page: number) {
@@ -45,17 +44,14 @@ export class MainComponent implements OnInit {
     this.printMovies(plusOne);
   }
 
-
-  printAllMovies() {
-    this.discoverMovieService.searchDiscoverMovie().subscribe((data)=> {
-      this.allMovies = data.results;
-    });
-  }
-
   search(e: Event): void {
 
     const target = e.target as HTMLInputElement;
     const value = target.value;
+
+    this.discoverMovieService.searchMovie(value).subscribe((data)=> {
+      this.allMovies = data.results;
+    });
 
     this.movies = this.allMovies.filter((movie) => {
       return movie.original_title.toLowerCase().includes(value);
