@@ -1,4 +1,25 @@
 <main>
+    <div class="form-container">
+        <nav>
+            <select class="input">
+                <option default>Order by</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+            </select>
+    
+            <select class="input">
+                <option default>Genre</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+            </select>
+        </nav>
+        <form>
+            <i class="bi bi-search"></i><input class="search" type="text" placeholder="Search" (input)="search($event)">
+        </form>
+    </div>
+
     <div class="movies-container">
         <ul class="movie-lines-container">
             <li *ngFor="let movie of movies" class="movie">

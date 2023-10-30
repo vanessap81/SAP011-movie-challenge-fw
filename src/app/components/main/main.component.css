@@ -8,6 +8,54 @@ main {
     background-color: #241468;
 }
 
+.form-container {
+    /* border: solid 1px red; */
+    width: 70%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: start;
+}
+
+nav {
+    /* border: solid 1px red; */
+    display: flex;
+    justify-content: start;
+}
+
+form {
+    color: #fff;
+}
+
+form .search {
+    width: 160px;
+    height: 28px;
+    margin-left: 8px;
+    padding-left: 12px;
+    background-color: gray;
+    box-shadow: none;
+    border: none;
+}
+
+input::placeholder {
+    color: #fff;
+    opacity: 1;
+}
+
+.input {
+    width: 180px;
+    height: 28px;
+    padding-left: 12px;
+    margin-right: 40px;
+    background-color: gray;
+    color: #fff;
+}
+
+.search-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 12px;
+}
+
 .movies-container {
     width: 70%;
     height: 80%;
@@ -16,7 +64,7 @@ main {
     align-items: center;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    margin-top: 80px;
+    margin-top: 40px;
     background-color: #4F709C;
 }
 
