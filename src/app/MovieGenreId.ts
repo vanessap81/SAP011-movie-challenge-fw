@@ -1,15 +1,15 @@
-export interface Movie {
+export interface MovieGenreId {
     id: number,
     original_title: string,
     release_date: string,
     poster_path: string,
     overview: string,
-    genres: GenreMovie[],
+    genre_id: Genre[],
     vote_average: number,
     vote_count: number
 }
 
-interface GenreMovie {
-    name: string
+interface Genre {
+    id: number
 }
 

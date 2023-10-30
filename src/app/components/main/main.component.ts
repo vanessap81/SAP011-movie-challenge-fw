@@ -14,7 +14,6 @@ export class MainComponent implements OnInit {
   movies: Movie[] = [];
   allMovies: Movie[] = [];
   listOfGenres: Genre[] = [];
-  moviesPerGenre: Movie[] = [];
   curentlyPage = '';
   
 
@@ -30,6 +29,7 @@ export class MainComponent implements OnInit {
     this.discoverMovieService.discoverMovies(page).subscribe((data)=> {
       this.movies = data.results;
       this.curentlyPage = data.page;
+      // console.log(this.movies);
     });
   }
 
@@ -64,19 +64,18 @@ export class MainComponent implements OnInit {
   createGenreList(): void {
     this.discoverMovieService.genreList().subscribe((data)=> {
       this.listOfGenres = data.genres;
-      console.log(this.listOfGenres);
+      // console.log(this.listOfGenres);
     });
   }
 
-  pickGenre(e: Event): void {
+  pickGenre(e: Event) {
     const target = e.target as HTMLInputElement;
     const value = target.value;
 
     this.discoverMovieService.pickGenre(value).subscribe((data)=> {
-      this.moviesPerGenre = data.results;
-      console.log(this.moviesPerGenre);
+      this.movies = data.results;
+      console.log(data);
     });
-
 
   }
 }
