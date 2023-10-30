@@ -44,13 +44,14 @@ export class MainComponent implements OnInit {
     this.printMovies(plusOne);
   }
 
-  search(e: Event): void {
+  search(e: Event) {
 
     const target = e.target as HTMLInputElement;
     const value = target.value;
 
     this.discoverMovieService.searchMovie(value).subscribe((data)=> {
       this.allMovies = data.results;
+      console.log(this.allMovies);
     });
 
     this.movies = this.allMovies.filter((movie) => {

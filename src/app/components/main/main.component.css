@@ -13,13 +13,13 @@ main {
     width: 70%;
     margin-top: 20px;
     display: flex;
-    justify-content: start;
+    /* justify-content: start; */
 }
 
 nav {
     /* border: solid 1px red; */
     display: flex;
-    justify-content: start;
+    /* justify-content: start; */
 }
 
 form {
