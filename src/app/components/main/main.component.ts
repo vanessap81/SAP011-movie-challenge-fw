@@ -53,14 +53,14 @@ export class MainComponent implements OnInit {
   // Se inserir o .toLowerCase depois de original_title não funciona com letras maiúsculas
   search(e: Event) {
     const target = e.target as HTMLInputElement;
-    const value = target.value;
+    const value = target.value.toLowerCase();
 
     this.discoverMovieService.searchMovie(value).subscribe((data)=> {
       this.allMovies = data.results;
     });
 
     this.movies = this.allMovies.filter((movie) => {
-      return movie.original_title.includes(value);
+      return movie.original_title.toLowerCase().includes(value);
     })
   }
 
