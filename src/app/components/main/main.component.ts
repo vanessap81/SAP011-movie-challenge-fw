@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DiscoverMovieService } from 'src/app/services/discover-movie.service';
 import { Movie } from 'src/app/Movie';
 import { Genre } from 'src/app/Genre';
@@ -10,6 +10,8 @@ import { Genre } from 'src/app/Genre';
 })
 
 export class MainComponent implements OnInit {
+
+  @ViewChild('movieContainer') movieContainer!: ElementRef;
 
   movies: Movie[] = [];
   allMovies: Movie[] = [];
@@ -30,6 +32,8 @@ export class MainComponent implements OnInit {
     this.discoverMovieService.discoverMovies(page).subscribe((data)=> {
       this.movies = data.results;
       this.curentlyPage = data.page;
+      console.log(this.movieContainer);
+      this.movieContainer.nativeElement.scrollTo({left: 0, top: 0, behavior: 'instant'});
       // console.log(this.movies);
     });
   }
@@ -50,7 +54,6 @@ export class MainComponent implements OnInit {
     this.printMovies(plusOne);
   }
 
-  // Se inserir o .toLowerCase depois de original_title não funciona com letras maiúsculas
   search(e: Event) {
     const target = e.target as HTMLInputElement;
     const value = target.value.toLowerCase();
@@ -89,10 +92,13 @@ export class MainComponent implements OnInit {
       this.movies = data.results;
       // console.log(data);
     });
-
   }
 
-  reloadPage(){
+  reloadPage(): void {
     window.location.reload()
   }
+
+  // scrollToTop(): void {
+  //   window.scrollTo(0, 0);
+  // }
 }
