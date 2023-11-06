@@ -1,0 +1,43 @@
+<main>
+    <div class="form-container">
+        <form>
+            <select class="input" (change)="sortBy($event)">
+                <option default>Order by</option>
+                <option [value]="orderByValues[0]">Most voted</option>
+                <option [value]="orderByValues[1]">Highest popularity</option>
+            </select>
+
+            <select class="input select-option" (change)="pickGenre($event)">
+                <option default>Genre</option>
+                <option class="genre_option" *ngFor="let genre of listOfGenres" [value]="genre.id">{{ genre.name }}</option>
+            </select>
+
+            <i class="bi bi-search"></i><input class="search" type="text" placeholder="Search" (input)="search($event)">
+        </form>
+
+        <button (click)="reloadPage()" class="refresh">Refresh</button>
+    </div>
+
+    <div class="movies-container" #movieContainer>
+        <ul class="movie-lines-container">
+            <li *ngFor="let movie of movies" class="movie">
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="poster-movie">
+                <p class="movie-info"><a routerLink="/details/{{ movie.id }}">{{ movie.original_title | uppercase }}</a></p>
+                <p>Year: {{ movie.release_date.slice(0, 4) }}</p>
+            </li>
+        </ul>
+
+    </div>
+    <div class="page-control">
+        <div class="previous-container">
+            <button (click)="printMovies(1)">First</button>
+            <button (click)="previousPage()">Previous</button>
+        </div>
+        <p class="page">Page {{ curentlyPage }}</p>
+        <div class="next-container">
+            <button (click)="nextPage()">Next</button>
+        </div>
+        
+    </div>
+    
+</main>
