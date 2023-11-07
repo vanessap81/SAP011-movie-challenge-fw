@@ -11,37 +11,37 @@ import { Genre } from '../Genre';
 export class DiscoverMovieService {
   key = 'api_key=64dd27c3ef4829715d2dd146a73e5d9e';
 
-  private apiUrl = 'https://api.themoviedb.org/3/discover/movie?page';
-  private apiUrl2 = 'https://api.themoviedb.org/3/movie';
-  private apiUrl3 = 'https://api.themoviedb.org/3/search/movie?query';
-  private apiUrl4 = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&with_genres';
-  private apiUrl5 = 'https://api.themoviedb.org/3/genre/movie/list?language=en';
-  private apiUrl6 = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by';
+  private apiDiscover = 'https://api.themoviedb.org/3/discover/movie?page';
+  private apiMovieId = 'https://api.themoviedb.org/3/movie';
+  private apiSearchMovie = 'https://api.themoviedb.org/3/search/movie?query';
+  private apiChooseGenre = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US';
+  private apiGenreList = 'https://api.themoviedb.org/3/genre/movie/list?language=en';
+  private apiSortBy = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US';
 
   constructor(private http: HttpClient) {}
 
   discoverMovies(page: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}=${page}&${this.key}`);
+    return this.http.get(`${this.apiDiscover}=${page}&${this.key}`);
   }
 
   getItem(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl2}/${id}?${this.key}`);
+    return this.http.get(`${this.apiMovieId}/${id}?${this.key}`);
   }
 
   searchMovie(value: string): Observable<any> {
-    return this.http.get(`${this.apiUrl3}=${value}&${this.key}`);
-  }
-
-  pickGenre(genres: string): Observable<any> {
-    return this.http.get(`${this.apiUrl4}=${genres}&${this.key}`);
+    return this.http.get(`${this.apiSearchMovie}=${value}&${this.key}`);
   }
 
   genreList(): Observable<any> {
-    return this.http.get(`${this.apiUrl5}&${this.key}`);
+    return this.http.get(`${this.apiGenreList}&${this.key}`);
   }
 
-  getSortBy(sortBy: string): Observable<any> {
-    return this.http.get(`${this.apiUrl6}=${sortBy}&${this.key}`);
+  chooseGenre(genres: string, page: number): Observable<any> {
+    return this.http.get(`${this.apiChooseGenre}&page=${page}&with_genres=${genres}&${this.key}`);
+  }
+
+  getSortBy(sortBy: string, page: number): Observable<any> {
+    return this.http.get(`${this.apiSortBy}&page=${page}&sort_by=${sortBy}&${this.key}`);
   }
 }
 

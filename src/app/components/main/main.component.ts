@@ -32,9 +32,9 @@ export class MainComponent implements OnInit {
     this.discoverMovieService.discoverMovies(page).subscribe((data)=> {
       this.movies = data.results;
       this.curentlyPage = data.page;
-      console.log(this.movieContainer);
+      // console.log(this.movieContainer);
       this.movieContainer.nativeElement.scrollTo({left: 0, top: 0, behavior: 'instant'});
-      // console.log(this.movies);
+      // console.log(data);
     });
   }
 
@@ -74,23 +74,25 @@ export class MainComponent implements OnInit {
     });
   }
 
-  pickGenre(e: Event) {
+  pickGenre(e: Event, page: number) {
     const target = e.target as HTMLInputElement;
     const value = target.value;
 
-    this.discoverMovieService.pickGenre(value).subscribe((data)=> {
+    this.discoverMovieService.chooseGenre(value, page).subscribe((data)=> {
       this.movies = data.results;
-      // console.log(data);
+      this.curentlyPage = data.page;
+      console.log(data);
     });
   }
 
-  sortBy(e: Event) {
+  sortBy(e: Event, page: number) {
     const target = e.target as HTMLInputElement;
     const value = target.value;
 
-    this.discoverMovieService.getSortBy(value).subscribe((data)=> {
+    this.discoverMovieService.getSortBy(value, page).subscribe((data)=> {
       this.movies = data.results;
-      // console.log(data);
+      this.curentlyPage = data.page;
+      console.log(data);
     });
   }
 
