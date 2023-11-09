@@ -7,6 +7,8 @@ import { HomeModule } from './components/home/home.module';
 import { MoviesModule } from './components/movies/movies.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HomeModule,
     MoviesModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

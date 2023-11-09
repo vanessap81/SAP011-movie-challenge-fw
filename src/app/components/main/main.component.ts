@@ -18,17 +18,34 @@ export class MainComponent implements OnInit {
   listOfGenres: Genre[] = [];
   orderByValues = ['vote_count.desc', 'popularity.desc'];
   curentlyPage = '';
+  genreId: number = 0;
   
 
   constructor(private discoverMovieService: DiscoverMovieService) {
   }
 
   ngOnInit(): void {
-    this.printMovies(1);
+    this.discoverMovies(1);
+    // this.printMovies();
     this.createGenreList();
   }
 
-  printMovies(page: number) {
+  printMovies(e: Event, page: number) {
+    const target = e.target as HTMLInputElement;
+    const value = target.value
+
+    if (value === 'popularity.desc') {
+      this.discoverMovies(1);
+    } else if (value === 'vote_count.desc') {
+      this.discoverMovieService.getSortBy(value, page).subscribe((data)=> {
+        this.movies = data.results;
+        this.curentlyPage = data.page;
+        console.log(data);
+      });
+    } 
+  }
+
+  discoverMovies(page: number) {
     this.discoverMovieService.discoverMovies(page).subscribe((data)=> {
       this.movies = data.results;
       this.curentlyPage = data.page;
@@ -36,22 +53,6 @@ export class MainComponent implements OnInit {
       this.movieContainer.nativeElement.scrollTo({left: 0, top: 0, behavior: 'instant'});
       // console.log(data);
     });
-  }
-
-  // Paginação só funciona no discover 
-  previousPage() {
-    let minusOne = Number(this.curentlyPage);
-    if (minusOne === 1) {
-      this.printMovies(1)
-    } 
-    minusOne--;
-    this.printMovies(minusOne);
-  }
-
-  nextPage(): void {
-    let plusOne = Number(this.curentlyPage);
-    plusOne++;
-    this.printMovies(plusOne);
   }
 
   search(e: Event) {
@@ -77,7 +78,7 @@ export class MainComponent implements OnInit {
   pickGenre(e: Event, page: number) {
     const target = e.target as HTMLInputElement;
     const value = target.value;
-
+    console.log(this.genreId);
     this.discoverMovieService.chooseGenre(value, page).subscribe((data)=> {
       this.movies = data.results;
       this.curentlyPage = data.page;
@@ -85,22 +86,35 @@ export class MainComponent implements OnInit {
     });
   }
 
-  sortBy(e: Event, page: number) {
-    const target = e.target as HTMLInputElement;
-    const value = target.value;
+  // sortBy(e: Event, page: number) {
+  //   const target = e.target as HTMLInputElement;
+  //   const value = target.value;
 
-    this.discoverMovieService.getSortBy(value, page).subscribe((data)=> {
-      this.movies = data.results;
-      this.curentlyPage = data.page;
-      console.log(data);
-    });
-  }
+  //   this.discoverMovieService.getSortBy(value, page).subscribe((data)=> {
+  //     this.movies = data.results;
+  //     this.curentlyPage = data.page;
+  //     console.log(data);
+  //   });
+  // }
 
   reloadPage(): void {
     window.location.reload()
   }
 
-  // scrollToTop(): void {
-  //   window.scrollTo(0, 0);
-  // }
+  // Paginação só funciona no discover 
+  previousPage() {
+    let minusOne = Number(this.curentlyPage);
+    if (minusOne === 1) {
+      this.discoverMovies(1)
+    } 
+    minusOne--;
+    this.discoverMovies(minusOne);
+  }
+
+  nextPage(): void {
+    let plusOne = Number(this.curentlyPage);
+    plusOne++;
+    this.discoverMovies(plusOne);
+  }
+
 }
