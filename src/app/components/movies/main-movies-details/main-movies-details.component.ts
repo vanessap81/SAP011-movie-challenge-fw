@@ -28,7 +28,7 @@ export class MainMoviesDetailsComponent {
     this.discoverMovie.getItem(id).subscribe((data) => {
       this.movie = data;
       this.genres = data.genres;
-      console.log(data);
+      // console.log(data);
     })
   }
 }
